@@ -1,3 +1,19 @@
+# Coding Challenge Repository
+
+Dear Engineer,
+
+this repository is meant for you as the template for a coding challenge. This repo is based on basejump and next js, but I added some basic features as a basis for our technical interview.
+
+Please, try beforehand to get this project up and running. You need to have Docker installed in order to run a local supabase with `npx supabase start`. You should also copy the `.env.template` file as a `.env.local` file to insert the proper environment variables (that you receive from starting supabase) in order for the next js app to be able to connect to supabase.
+
+I do not consider the code repository perfect as is and some dependencies are already outdated as the time of writing, so please consider potential issues due to this when you work in this project.
+
+Reach out for questions or potential issues with this setup. Otherwise, I am happy to meet you.
+
+Best regards
+
+Just below you can find the original Readme of this template:
+
 # Basejump Nextjs Starter
 
 Adds a Nextjs starter app on top of [Basejump core](https://github.com/usebasejump/basejump). This is a complete interface with support for personal accounts, team accounts, invitations, managing members/permissions and subscription billing.
@@ -52,6 +68,7 @@ When you're ready to work on billing, you'll need to set up a Stripe account and
 Yes please! Please submit a PR with your changes to [the basejump-next github repo](https://github.com/usebasejump/basejump-next).
 
 You can contribute in the following places:
+
 - [Basejump core](https://github.com/usebasejump/basejump)
 - [Basejump Nextjs](https://github.com/usebasejump/basejump-next)
 - [Basejump edge functions / billing functions](https://github.com/usebasejump/basejump-deno-packages)
