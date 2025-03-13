@@ -4,7 +4,7 @@ Dear Engineer,
 
 this repository is meant for you as the template for a coding challenge. This repo is based on basejump and next js, but I added some basic features as a basis for our technical interview.
 
-Please, try beforehand to get this project up and running. You need to have Docker installed in order to run a local supabase with `npx supabase start`. You should also copy the `.env.template` file as a `.env.local` file to insert the proper environment variables (that you receive from starting supabase) in order for the next js app to be able to connect to supabase.
+Please, try beforehand to get this project up and running. You need to have Docker installed in order to run a local supabase with `npx supabase start`. You should also copy the `.env.template` file as a `.env.local` file to insert the proper environment variables (that you receive from starting supabase) in order for the next js app to be able to connect to supabase. When the app is running you can login with the test users from the seed.sql file.
 
 I do not consider the code repository perfect as is and some dependencies are already outdated as the time of writing, so please consider potential issues due to this when you work in this project.
 

@@ -1,11 +1,19 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
+import { Database } from "./types";
 
 function forceLoginWithReturn(request: NextRequest) {
   const originalUrl = new URL(request.url);
   const path = originalUrl.pathname;
   const query = originalUrl.searchParams.toString();
-  return NextResponse.redirect(new URL(`/login?returnUrl=${encodeURIComponent(path + (query ? `?${query}` : ''))}`, request.url));
+  return NextResponse.redirect(
+    new URL(
+      `/login?returnUrl=${encodeURIComponent(
+        path + (query ? `?${query}` : "")
+      )}`,
+      request.url
+    )
+  );
 }
 
 export const validateSession = async (request: NextRequest) => {
@@ -19,7 +27,7 @@ export const validateSession = async (request: NextRequest) => {
       },
     });
 
-    const supabase = createServerClient(
+    const supabase = createServerClient<Database>(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
       {
@@ -64,16 +72,21 @@ export const validateSession = async (request: NextRequest) => {
             });
           },
         },
-      },
+      }
     );
 
     // This will refresh session if expired - required for Server Components
     // https://supabase.com/docs/guides/auth/server-side/nextjs
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
-    const protectedRoutes = ['/dashboard', '/invitation'];
+    const protectedRoutes = ["/dashboard", "/invitation"];
 
-    if (!user && protectedRoutes.some(path => request.nextUrl.pathname.startsWith(path))) {
+    if (
+      !user &&
+      protectedRoutes.some((path) => request.nextUrl.pathname.startsWith(path))
+    ) {
       // redirect to /login
       return forceLoginWithReturn(request);
     }
